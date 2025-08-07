@@ -35,8 +35,11 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Set unique image tag
-        run: echo "IMAGE_TAG=${GITHUB_SHA}" >> $GITHUB_ENV
+      - name: Set unique image tag with timestamp
+        run: |
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          IMAGE_TAG="latest-$TIMESTAMP"
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
 
       - name: Build, tag, and push Docker image
         run: |
