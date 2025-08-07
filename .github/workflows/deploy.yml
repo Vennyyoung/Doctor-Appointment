@@ -57,4 +57,4 @@ jobs:
       - name: Set image in deployment
         run: |
           kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} \
-            ${{ env.CONTAINER_NAME }}=${{ env.IMAGE_URI }} --record
+            ${{ env.CONTAINER_NAME }}=${{ env.IMAGE_URI }}
