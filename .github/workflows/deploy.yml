@@ -3,7 +3,7 @@ name: Deploy to EKS
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   AWS_REGION: eu-north-1
@@ -51,4 +51,5 @@ jobs:
       - name: Set image in deployment
         run: |
           kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} ${{ env.CONTAINER_NAME }}=${{ env.IMAGE_URI }} --record
+
 
